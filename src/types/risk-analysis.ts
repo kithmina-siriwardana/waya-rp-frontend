@@ -9,7 +9,8 @@ export interface ResultCreate {
 
 export interface TableDataItem {
   _id: string;
-  userId: string;
+  userId?: string;
+  userName?: string;
   staffId: string;
   createdAt: string;
   result: Result;
@@ -19,7 +20,7 @@ export interface TableDataItem {
 export interface FormattedTableDataItem {
   key: number;
   id: string;
-  userId: string;
+  userId?: string;
   staffId: string;
   prediction: string;
   confidence: string;
@@ -45,6 +46,7 @@ export interface SidebarItemProps {
 export interface NewRiskRecordComponentProps {
   isTableUpdated: boolean;
   setIsTableUpdated: (isUpdated: boolean) => void;
+  setIsFormOpen?: (isOpen: boolean) => void;
 }
 
 export interface SubmitConfirmModalProps {

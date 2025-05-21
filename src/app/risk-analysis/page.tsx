@@ -30,7 +30,7 @@ const formatTime = (dateString: string) => {
 };
 
 export default function RiskAnalysisPage() {
-  const { token } = useAuth();
+  const { token, user } = useAuth();
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [showForm, setShowForm] = useState(false);
@@ -45,8 +45,16 @@ export default function RiskAnalysisPage() {
   );
 
   useEffect(() => {
+    if (!token || !user?._id) return;
     axios
-      .get(`${process.env.NEXT_PUBLIC_API_URL}/predict/analyze-risk`)
+      .get(
+        `${process.env.NEXT_PUBLIC_API_URL}/predict/analyze-risk/${user?._id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
       .then((response) => {
         console.log("Alzeimer analysis response:", response.data);
         setTableData(response.data);
@@ -57,14 +65,13 @@ export default function RiskAnalysisPage() {
         setIsLoading(false);
         setError("An error occurred");
       });
-  }, [isTableUpdated]);
+  }, [isTableUpdated, token, user?._id]);
 
   useEffect(() => {
     const formattedData = tableData.map((data, index) => {
       return {
         id: data._id,
         key: index + 1,
-        userId: data.userId,
         staffId: data.staffId,
         prediction: data.result.prediction === 1 ? "Positive" : "Negative",
         confidence: `${
@@ -157,6 +164,7 @@ export default function RiskAnalysisPage() {
               <NewRiskRecordComponent
                 isTableUpdated={isTableUpdated}
                 setIsTableUpdated={setIsTableUpdated}
+                setIsFormOpen={setShowForm}
               />
             </div>
           )}

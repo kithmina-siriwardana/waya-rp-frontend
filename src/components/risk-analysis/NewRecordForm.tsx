@@ -6,11 +6,14 @@ import {
   ResultCreate,
 } from "@/types/risk-analysis";
 import SubmitConfirmModal from "./SubmitConfirmModal";
+import { useAuth } from "@/context/AuthContext";
 
 const NewRiskRecordComponent: React.FC<NewRiskRecordComponentProps> = ({
   isTableUpdated,
   setIsTableUpdated,
+  setIsFormOpen,
 }) => {
+  const { user, token } = useAuth();
   const [formData, setFormData] = useState({
     PatientName: "",
     Age: "",
@@ -110,8 +113,8 @@ const NewRiskRecordComponent: React.FC<NewRiskRecordComponentProps> = ({
           formData.DifficultyCompletingTasks === "true" ? 1 : 0,
         Forgetfulness: formData.Forgetfulness === "true" ? 1 : 0,
       },
-      userName: "John Doe",
-      userId: "USR002356",
+      userName: user?.name,
+      userId: user?._id,
       staffId: "STF000184",
     };
 
@@ -721,7 +724,7 @@ const NewRiskRecordComponent: React.FC<NewRiskRecordComponentProps> = ({
           </button>
           <button
             type="button"
-            // onClick={() => setIsModalVisible(false)}
+            onClick={() => setIsFormOpen?.(false)}
             className="px-4 py-2 bg-gray-500 hover:bg-gray-600 text-white rounded-md"
           >
             Cancel

@@ -44,7 +44,7 @@ const RecordDetailsModal = ({
                   <p className="text-gray-700">{selectedRecord?.userId}</p>
 
                   <p className="text-gray-700 font-semibold">Patient Name:</p>
-                  <p className="text-gray-700">Saman Kumara</p>
+                  <p className="text-gray-700">{selectedRecord?.userName}</p>
 
                   <p className="text-gray-700 font-semibold">Prediction:</p>
                   <p className="text-gray-700">
@@ -55,7 +55,10 @@ const RecordDetailsModal = ({
 
                   <p className="text-gray-700 font-semibold">Confidence:</p>
                   <p className="text-gray-700">
-                    {selectedRecord?.result.confidence}%
+                    {selectedRecord?.result.confidence > 50
+                      ? selectedRecord.result.confidence
+                      : 100 - selectedRecord.result.confidence}
+                    %
                   </p>
 
                   <p className="text-gray-700 font-semibold">Date:</p>

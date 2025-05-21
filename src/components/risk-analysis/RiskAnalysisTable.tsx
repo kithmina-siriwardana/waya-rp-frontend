@@ -10,43 +10,40 @@ const columns: ColumnsType<FormattedTableDataItem> = [
     dataIndex: "key",
     key: "key",
     render: (text: string) => <>{text}</>,
-    width: "10%",
-  },
-  {
-    title: "User ID",
-    dataIndex: "userId",
-    key: "userId",
-    width: "15%",
-  },
-  {
-    title: "Staff ID",
-    dataIndex: "staffId",
-    key: "staffId",
-    width: "15%",
+    width: "20%",
   },
   {
     title: "Prediction",
     dataIndex: "prediction",
     key: "prediction",
-    width: "15%",
+    width: "20%",
+    render: (text: string) => (
+      <div
+        className={`font-semibold ${
+          text === "Positive" ? "text-red-500" : "text-green-500"
+        }`}
+      >
+        {text}
+      </div>
+    ),
   },
   {
     title: "Confidence",
     dataIndex: "confidence",
     key: "confidence",
-    width: "15%",
+    width: "20%",
   },
   {
     title: "Date",
     dataIndex: "date",
     key: "date",
-    width: "15%",
+    width: "20%",
   },
   {
     title: "Time",
     dataIndex: "time",
     key: "time",
-    width: "15%",
+    width: "20%",
   },
 ];
 
@@ -65,7 +62,7 @@ const RiskAnalysisTable = ({
     <Table
       columns={columns}
       dataSource={tableData}
-      pagination={{ pageSize: 9 }}
+      pagination={{ pageSize: 10 }}
       rowKey="key"
       onRow={(record) => {
         return {

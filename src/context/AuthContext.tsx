@@ -10,6 +10,7 @@ import React, {
 import { useRouter } from "next/navigation";
 
 interface User {
+  _id?: string;
   id: string;
   name: string;
   email: string;
