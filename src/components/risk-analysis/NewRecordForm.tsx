@@ -50,6 +50,7 @@ const NewRiskRecordComponent: React.FC<NewRiskRecordComponentProps> = ({
   });
   const [response, setResponse] = useState<ResultCreate | null>(null);
   const [isSubmitModalOpen, setIsSubmitModalOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -59,7 +60,7 @@ const NewRiskRecordComponent: React.FC<NewRiskRecordComponentProps> = ({
 
   const handleSubmitNewRecord = (e: React.FormEvent) => {
     e.preventDefault();
-
+    setIsLoading(true);
     // Check if any field is empty
     for (const key in formData) {
       const emptyFields = [];
@@ -129,9 +130,11 @@ const NewRiskRecordComponent: React.FC<NewRiskRecordComponentProps> = ({
       .then((response) => {
         setResponse(response.data[0].Predictions.XGBoost);
         setIsTableUpdated(!isTableUpdated);
+        setIsLoading(false);
       })
       .catch((error) => {
         console.error("Error:", error);
+        setIsLoading(false);
       });
   };
 
@@ -732,8 +735,9 @@ const NewRiskRecordComponent: React.FC<NewRiskRecordComponentProps> = ({
           <button
             type="submit"
             className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md"
+            disabled={isLoading}
           >
-            Submit Analysis
+            {isLoading ? "Submitting..." : "Submit Analysis"}
           </button>
         </div>
       </form>
