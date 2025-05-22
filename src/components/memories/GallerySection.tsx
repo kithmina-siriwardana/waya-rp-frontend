@@ -159,9 +159,12 @@ export default function GallerySection({ memories }: { memories: Memory[] }) {
                     day: "numeric",
                   })}
                 </p>
-                <Button variant="secondary" size="sm">
+                <button
+                  className="bg-white text-blue-500 px-4 py-2 rounded-md hover:bg-blue-600 hover:text-white transition-colors"
+                  onClick={() => setSelectedMemory(memory)}
+                >
                   View More
-                </Button>
+                </button>
               </div>
             </div>
           </div>

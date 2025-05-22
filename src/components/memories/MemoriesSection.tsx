@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Memory } from "@/types/memories";
 import MemoriesTable from "./MemoriesTable";
 import MemoryDetailsModal from "./MemoryDetailsModal";
+import MemoriesList from "./MemoriesList";
 
 export default function MemoriesSection({ memories }: { memories: Memory[] }) {
   const [selectedMemory, setSelectedMemory] = useState<Memory | null>(null);
@@ -19,7 +20,8 @@ export default function MemoriesSection({ memories }: { memories: Memory[] }) {
 
   return (
     <div className="space-y-6">
-      <MemoriesTable tableData={memories} handleRowClick={handleRowClick} />
+      {/* <MemoriesTable tableData={memories} handleRowClick={handleRowClick} /> */}
+      <MemoriesList tableData={memories} handleRowClick={handleRowClick} />
 
       {selectedMemory && (
         <MemoryDetailsModal
