@@ -9,12 +9,14 @@ export interface Memory {
 }
 
 export interface Reminder {
-  id: string;
-  topic: string;
+  _id?: string;
+  id?: string;
+  userId: string;
+  title: string;
   description: string;
   date: string;
   time: string;
-  createdAt: string;
+  createdAt?: string;
 }
 
 export type TabType = "memories" | "gallery";

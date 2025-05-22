@@ -721,20 +721,20 @@ const NewRiskRecordComponent: React.FC<NewRiskRecordComponentProps> = ({
           <button
             type="button"
             onClick={handleFillRandomData}
-            className="px-4 py-2 bg-gray-500 hover:bg-gray-600 text-white rounded-md"
+            className="px-4 py-2 bg-gray-500 hover:bg-gray-600 text-white rounded-md cursor-pointer"
           >
             Fill Random Data
           </button>
           <button
             type="button"
             onClick={() => setIsFormOpen?.(false)}
-            className="px-4 py-2 bg-gray-500 hover:bg-gray-600 text-white rounded-md"
+            className="px-4 py-2 bg-gray-500 hover:bg-gray-600 text-white rounded-md cursor-pointer"
           >
             Cancel
           </button>
           <button
             type="submit"
-            className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md"
+            className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md cursor-pointer"
             disabled={isLoading}
           >
             {isLoading ? "Submitting..." : "Submit Analysis"}

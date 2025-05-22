@@ -2,7 +2,7 @@ import React from "react";
 import Button from "@/components/ui/Button";
 import { SubmitConfirmModalProps } from "@/types/risk-analysis";
 
-export default function SubmitConfirmModal({
+export default function ReminderSubmitConfirmModal({
   isOpen,
   onClose,
   onConfirm,
@@ -14,7 +14,7 @@ export default function SubmitConfirmModal({
       <div className="bg-white rounded-lg shadow-xl max-w-lg w-full p-6 mx-4">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-xl font-bold text-gray-800">
-            Submit Confirmation?
+            Reminder Submit Confirmation?
           </h2>
 
           <button
@@ -39,7 +39,7 @@ export default function SubmitConfirmModal({
         </div>
 
         <p className="text-gray-600 mb-6">
-          Are you sure you want to submit the memory?
+          Are you sure you want to submit the reminder?
         </p>
 
         <div className="flex flex-col sm:flex-row justify-center space-y-3 sm:space-y-0 sm:space-x-4">

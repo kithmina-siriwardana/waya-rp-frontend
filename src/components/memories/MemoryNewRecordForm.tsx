@@ -4,11 +4,10 @@ import {
   NewRiskRecordComponentProps,
   ResultCreate,
 } from "@/types/risk-analysis";
-import SubmitConfirmModal from "./SubmitConfirmModal";
-import { Memory } from "@/types/memories";
 import { useAuth } from "@/context/AuthContext";
+import MemorySubmitConfirmModal from "./MemorySubmitConfirmModal";
 
-const NewRiskRecordComponent: React.FC<NewRiskRecordComponentProps> = ({
+const MemoryNewRecordComponent: React.FC<NewRiskRecordComponentProps> = ({
   isTableUpdated,
   setIsTableUpdated,
   setIsFormOpen,
@@ -20,7 +19,6 @@ const NewRiskRecordComponent: React.FC<NewRiskRecordComponentProps> = ({
     image: null as File | null,
   });
   const { user, token } = useAuth();
-  const [response, setResponse] = useState<ResultCreate | null>(null);
   const [isSubmitModalOpen, setIsSubmitModalOpen] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
   const [uploadError, setUploadError] = useState<string | null>(null);
@@ -215,7 +213,7 @@ const NewRiskRecordComponent: React.FC<NewRiskRecordComponentProps> = ({
         </div>
       </form>
 
-      <SubmitConfirmModal
+      <MemorySubmitConfirmModal
         isOpen={isSubmitModalOpen}
         onClose={() => setIsSubmitModalOpen(false)}
         onConfirm={handleSubmit}
@@ -224,4 +222,4 @@ const NewRiskRecordComponent: React.FC<NewRiskRecordComponentProps> = ({
   );
 };
 
-export default NewRiskRecordComponent;
+export default MemoryNewRecordComponent;

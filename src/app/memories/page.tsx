@@ -6,7 +6,7 @@ import { Memory, TabType } from "@/types/memories";
 import MemoriesSection from "@/components/memories/MemoriesSection";
 import GallerySection from "@/components/memories/GallerySection";
 import Button from "@/components/ui/Button";
-import NewRiskRecordComponent from "@/components/memories/NewRecordForm";
+import MemoryNewRecordComponent from "@/components/memories/MemoryNewRecordForm";
 import axios from "axios";
 import { useAuth } from "@/hooks/useAuth";
 
@@ -87,7 +87,7 @@ export default function MemoriesPage() {
               <h2 className="text-xl font-semibold">New Memory</h2>
             </div>
 
-            <NewRiskRecordComponent
+            <MemoryNewRecordComponent
               isTableUpdated={isTableUpdated}
               setIsTableUpdated={setIsTableUpdated}
               setIsFormOpen={setIsFormOpen}
